@@ -1,0 +1,12 @@
+node_modules/
+lib/
+dist/
+coverage/
+tmp/
+.js-ipfs
+.DS_Store
+yarn.lock
+orbitdb
+.idea
+example/build.js
+.ipfs

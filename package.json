@@ -1,0 +1,45 @@
+{
+  "name": "did-gen",
+  "version": "1.0.0",
+  "description": "Generate DIDs and signers for testing",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --require @babel/register src/test/test.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "3id-resolver": "^1.0.1",
+    "@ethersproject/hdnode": "^5.0.1",
+    "did-jwt": "^4.4.0",
+    "did-resolver": "^2.0.1",
+    "elliptic": "^6.5.3",
+    "ethers": "^5.0.4",
+    "events": "^3.1.0",
+    "ipfs": "^0.47.0",
+    "ipfs-did-document": "^1.2.3",
+    "js-sha256": "^0.9.0",
+    "multihashes": "^1.0.1",
+    "node-fetch": "^2.6.0",
+    "secp256k1": "^4.0.1",
+    "store": "^2.0.12",
+    "tweetnacl": "^1.0.3",
+    "tweetnacl-util": "^0.15.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.10.4",
+    "@babel/preset-env": "^7.10.4",
+    "@babel/register": "^7.10.4",
+    "chai": "^4.2.0",
+    "eslint": "6.8.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-mocha": "^7.0.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "esm": "^3.2.25",
+    "mocha": "^8.0.1",
+    "nodemon": "^2.0.4"
+  }
+}
