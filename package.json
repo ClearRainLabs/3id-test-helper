@@ -1,12 +1,12 @@
 {
-  "name": "did-gen",
+  "name": "3id-test-helpers",
   "version": "1.0.0",
-  "description": "Generate DIDs and signers for testing",
-  "main": "index.js",
+  "description": "Generate 3IDs and signers for testing",
+  "main": "src/index.js",
   "scripts": {
-    "test": "mocha --require @babel/register src/test/test.js"
+    "test": "mocha --require @babel/register test/test.js"
   },
-  "author": "",
+  "author": "samhatem",
   "license": "ISC",
   "dependencies": {
     "3id-resolver": "^1.0.1",
@@ -15,7 +15,6 @@
     "did-resolver": "^2.0.1",
     "elliptic": "^6.5.3",
     "ethers": "^5.0.4",
-    "events": "^3.1.0",
     "ipfs": "^0.47.0",
     "ipfs-did-document": "^1.2.3",
     "js-sha256": "^0.9.0",
@@ -38,8 +37,6 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
-    "esm": "^3.2.25",
-    "mocha": "^8.0.1",
-    "nodemon": "^2.0.4"
+    "mocha": "^8.0.1"
   }
 }

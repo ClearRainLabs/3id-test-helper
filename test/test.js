@@ -1,6 +1,6 @@
 /* global describe, before, it, after */
 
-import DidTestHelpers from '../index'
+import DidTestHelpers from '../src/index'
 import didJWT from 'did-jwt'
 import { Resolver } from 'did-resolver'
 import { getResolver } from '3id-resolver'
