@@ -4,7 +4,7 @@ import ThreeId from './3id'
 
 const OWNER_PRIV_KEY = '0x58cf0ea0bfd990225d0e3c077f9ba302c79591c3fb11f11bc33df560fbe251a8'
 
-class DidTestHelpers {
+class DidTestHelper {
   constructor (ipfs) {
     if (!ipfs) throw new Error('Must helper class with an instance of ipfs')
     this.ipfs = ipfs
@@ -82,4 +82,4 @@ class DidTestHelpers {
   }
 }
 
-export default DidTestHelpers
+export default DidTestHelper

@@ -1,6 +1,6 @@
 /* global describe, before, it, after */
 
-import DidTestHelpers from '../src/index'
+import DidTestHelper from '../src/index'
 import didJWT from 'did-jwt'
 import { Resolver } from 'did-resolver'
 import { getResolver } from '3id-resolver'
@@ -26,7 +26,7 @@ describe('DID gen tests', function () {
 
   before(async function () {
     ipfs = await IPFS.create()
-    testHelper = new DidTestHelpers(ipfs)
+    testHelper = new DidTestHelper(ipfs)
   })
 
   after(function () {
