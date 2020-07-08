@@ -31,5 +31,4 @@ const newSymKey = () => {
   return nacl.randomBytes(32)
 }
 
-
 module.exports = { randomNonce, symEncryptBase, symDecryptBase, newSymKey }

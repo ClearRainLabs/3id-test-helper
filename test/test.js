@@ -1,11 +1,11 @@
 /* global describe, before, it, after */
 
-import DidTestHelper from '../src/index'
-import didJWT from 'did-jwt'
-import { Resolver } from 'did-resolver'
-import { getResolver } from '3id-resolver'
-import IPFS from 'ipfs'
-import { assert } from 'chai'
+const DidTestHelper = require('../src/index')
+const didJWT = require('did-jwt')
+const { Resolver } = require('did-resolver')
+const { getResolver } = require('3id-resolver')
+const IPFS = require('ipfs')
+const { assert } = require('chai')
 
 const testKeys = ['0x2f03bbd84a197aac98e0e15c6b41ce0135725a02a30e07e2355e27ecf95bf91d',
   '0x900c8bf6d4848f99dc8fb2c65954c786478fbbe9a3a0ab0e4d3843e787761463',

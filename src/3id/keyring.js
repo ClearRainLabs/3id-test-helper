@@ -5,7 +5,7 @@ const SimpleSigner = require('did-jwt').SimpleSigner
 const sha256 = require('js-sha256').sha256
 const EC = require('elliptic').ec
 const ec = new EC('secp256k1')
-const { randomNonce, symEncryptBase, symDecryptBase }  = require('./utils')
+const { randomNonce, symEncryptBase, symDecryptBase } = require('./utils')
 
 const BASE_PATH = "m/7696500'/0'/0'"
 const MM_PATH = "m/44'/60'/0'/0"
@@ -16,12 +16,12 @@ class Keyring {
     const seedNode = HDNode.fromSeed(this._seed)
     const baseNode = seedNode.derivePath(BASE_PATH)
 
-    this.signingKey = baseNode.derivePath("0")
-    const tmpEncKey = Buffer.from(baseNode.derivePath("2").privateKey.slice(2), 'hex')
+    this.signingKey = baseNode.derivePath('0')
+    const tmpEncKey = Buffer.from(baseNode.derivePath('2').privateKey.slice(2), 'hex')
     this.asymEncryptionKey = nacl.box.keyPair.fromSecretKey(new Uint8Array(tmpEncKey))
-    this.symEncryptionKey = new Uint8Array(Buffer.from(baseNode.derivePath("3").privateKey.slice(2), 'hex'))
+    this.symEncryptionKey = new Uint8Array(Buffer.from(baseNode.derivePath('3').privateKey.slice(2), 'hex'))
 
-    this.ethereumKey = seedNode.derivePath(MM_PATH).derivePath("0")
+    this.ethereumKey = seedNode.derivePath(MM_PATH).derivePath('0')
   }
 
   asymEncrypt (msg, toPublic, nonce) {

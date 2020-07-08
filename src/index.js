@@ -1,6 +1,6 @@
-import { ethers } from 'ethers'
-import didJWT from 'did-jwt'
-import ThreeId from './3id'
+const ethers = require('ethers')
+const didJWT = require('did-jwt')
+const ThreeId = require('./3id')
 
 const OWNER_PRIV_KEY = '0x58cf0ea0bfd990225d0e3c077f9ba302c79591c3fb11f11bc33df560fbe251a8'
 
@@ -82,4 +82,4 @@ class DidTestHelper {
   }
 }
 
-export default DidTestHelper
+module.exports = DidTestHelper

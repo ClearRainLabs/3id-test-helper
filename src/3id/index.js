@@ -1,18 +1,13 @@
 const { mnemonicToSeed, entropyToMnemonic } = require('@ethersproject/hdnode')
 const EventEmitter = require('events')
 const didJWT = require('did-jwt')
-const { Resolver } = require('did-resolver')
-const get3IdResolver = require('3id-resolver').getResolver
 const DidDocument = require('ipfs-did-document')
 const localstorage = require('store')
 const Keyring = require('./keyring')
-const nacl = require('tweetnacl')
-const { randomNonce }  = require('./utils')
 const sha256 = require('js-sha256').sha256
 
 const DID_METHOD_NAME = '3'
 const STORAGE_KEY = 'serialized3id_'
-const POLL_INTERVAL = 500
 
 class ThreeId {
   constructor (provider, ipfs, opts = {}) {
@@ -21,8 +16,6 @@ class ThreeId {
     this._has3idProv = Boolean(opts.has3idProv)
     this._ipfs = ipfs
     this._pubkeys = { spaces: {} }
-    const threeIdResolver = get3IdResolver(ipfs, { pin: true })
-    const resolver = new Resolver({...threeIdResolver})
   }
 
   getSigningKey () {
@@ -62,10 +55,10 @@ class ThreeId {
 
   serializeState () {
     if (this._has3idProv) throw new Error('Can not serializeState of IdentityWallet')
-    let stateObj = {
+    const stateObj = {
       managementAddress: this.managementAddress,
       seed: this._mainKeyring.serialize(),
-      spaceSeeds: {},
+      spaceSeeds: {}
     }
     Object.keys(this._keyrings).map(name => {
       stateObj.spaceSeeds[name] = this._keyrings[name].serialize()
@@ -90,8 +83,7 @@ class ThreeId {
 
   async _initDID () {
     this._rootDID = await this._init3ID()
-    let spaces
-    spaces = Object.keys(this._keyrings)
+    const spaces = Object.keys(this._keyrings)
 
     const subDIDs = await Promise.all(
       spaces.map(space => {
@@ -135,17 +127,6 @@ class ThreeId {
     return this.managementAddress
   }
 
-  async authenticate (spaces, opts = {}) {
-    spaces = spaces || []
-    for (const space of spaces) {
-      await this._initKeyringByName(space, wallet)
-    }
-  }
-
-  async isAuthenticated (spaces = []) {
-    return spaces.reduce((acc, space) => acc && Object.keys(this._subDIDs).includes(space), true)
-  }
-
   async _initKeyringByName (name, wallet) {
     if (this._has3idProv) throw new Error('Can not initKeyringByName of IdentityWallet')
     if (!this._keyrings[name]) {
@@ -177,36 +158,6 @@ class ThreeId {
     return pubkeys
   }
 
-  async encrypt (message, space, to) {
-    const keyring = this._keyringBySpace(space)
-    let paddedMsg = typeof message === 'string' ? _pad(message) : message
-    if (to) {
-      return keyring.asymEncrypt(paddedMsg, to)
-    } else {
-      return keyring.symEncrypt(paddedMsg)
-    }
-  }
-
-  async decrypt (encObj, space, toBuffer) {
-    const keyring = this._keyringBySpace(space)
-    let paddedMsg
-    if (encObj.ephemeralFrom) {
-      paddedMsg = keyring.asymDecrypt(encObj.ciphertext, encObj.ephemeralFrom, encObj.nonce, toBuffer)
-    } else {
-      paddedMsg = keyring.symDecrypt(encObj.ciphertext, encObj.nonce, toBuffer)
-    }
-    return toBuffer ? paddedMsg : _unpad(paddedMsg)
-  }
-
-  _pad (val, blockSize = ENC_BLOCK_SIZE) {
-    const blockDiff = (blockSize - (val.length % blockSize)) % blockSize
-    return `${val}${'\0'.repeat(blockDiff)}`
-  }
-
-  _unpad (padded) {
-    return padded.replace(/\0+$/, '')
-  }
-
   _keyringBySpace (space) {
     return space ? this._keyrings[space] : this._mainKeyring
   }
@@ -229,7 +180,7 @@ class ThreeId {
   static async getIdFromEthAddress (address, provider, ipfs, wallet, opts = {}) {
     opts.has3idProv = Boolean(provider.is3idProvider)
     if (opts.has3idProv) {
-      return new ThreeId(provider, ipfs, keystore, opts)
+      return new ThreeId(provider, ipfs, opts)
     } else {
       const normalizedAddress = address.toLowerCase()
       let serialized3id = localstorage.get(STORAGE_KEY + normalizedAddress)
@@ -259,15 +210,6 @@ class ThreeId {
       await threeId._initDID()
       return threeId
     }
-  }
-}
-
-const createMuportDocument = (signingKey, managementKey, asymEncryptionKey) => {
-  return {
-    version: 1,
-    signingKey,
-    managementKey,
-    asymEncryptionKey
   }
 }
 

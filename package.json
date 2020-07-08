@@ -4,7 +4,7 @@
   "description": "Generate 3IDs and signers for testing",
   "main": "src/index.js",
   "scripts": {
-    "test": "mocha --require @babel/register test/test.js"
+    "test": "mocha test/test.js"
   },
   "author": "samhatem",
   "license": "ISC",
@@ -26,9 +26,6 @@
     "tweetnacl-util": "^0.15.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.10.4",
-    "@babel/preset-env": "^7.10.4",
-    "@babel/register": "^7.10.4",
     "chai": "^4.2.0",
     "eslint": "6.8.0",
     "eslint-config-standard": "^14.1.1",
