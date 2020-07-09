@@ -11,7 +11,7 @@ $ npm install 3id-test-helper
 
 **Create the class**
 ```javascript
-const DidHelper = require('did-test-helper')
+const DidHelper = require('3id-test-helper')
 const IPFS = require('ipfs')
 
 const ipfs = await IPFS.create()
