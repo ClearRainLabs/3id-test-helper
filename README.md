@@ -4,7 +4,7 @@ A library to generate DIDs and sign Json Web Tokens (JWTs). This library is mean
 ## Install
 Using npm:
 ```sh
-$ npm install 3id-test-helpers
+$ npm install 3id-test-helper
 ```
 
 ## API
