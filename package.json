@@ -1,6 +1,6 @@
 {
-  "name": "3id-test-helpers",
-  "version": "1.0.0",
+  "name": "3id-test-helper",
+  "version": "1.0.1",
   "description": "Generate 3IDs and signers for testing",
   "main": "src/index.js",
   "scripts": {
@@ -21,6 +21,10 @@
     "store": "^2.0.12",
     "tweetnacl": "^1.0.3",
     "tweetnacl-util": "^0.15.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ClearRainLabs/3id-test-helpers"
   },
   "devDependencies": {
     "chai": "^4.2.0",

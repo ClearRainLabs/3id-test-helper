@@ -1,6 +1,6 @@
 /* global describe, before, it, after */
 
-const DidTestHelper = require('../src/index')
+const DidHelper = require('../src/index')
 const didJWT = require('did-jwt')
 const { Resolver } = require('did-resolver')
 const { getResolver } = require('3id-resolver')
@@ -28,7 +28,7 @@ describe('DID gen tests', function () {
 
   before(async function () {
     ipfs = await IPFS.create()
-    testHelper = new DidTestHelper(ipfs)
+    testHelper = new DidHelper(ipfs)
   })
 
   after(function () {
