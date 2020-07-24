@@ -1,6 +1,6 @@
 {
   "name": "3id-test-helper",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Generate 3IDs and signers for testing",
   "main": "src/index.js",
   "scripts": {
