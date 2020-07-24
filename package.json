@@ -24,7 +24,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ClearRainLabs/3id-test-helpers"
+    "url": "git+https://github.com/OutpostProtocol/3id-test-helpers"
   },
   "devDependencies": {
     "chai": "^4.2.0",
